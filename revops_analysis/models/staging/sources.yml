@@ -1,0 +1,103 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: lean-layer-revops
+    schema: bronze
+    description: "Raw data loaded from Google Cloud Storage into BigQuery Bronze layer. 
+                  Simulates data ingested from CRM systems like HubSpot or Salesforce."
+    
+    tables:
+      - name: owners
+        description: "Raw sales rep metadata including segment, role dates and manager info"
+        columns:
+          - name: owner_id
+            description: "Unique identifier for each sales rep"
+            tests:
+              - not_null
+              - unique
+          - name: name
+            description: "Full name of the sales rep"
+          - name: email
+            description: "Email address of the sales rep"
+          - name: role_start_date
+            description: "Date the rep started their current role"
+          - name: role_end_date
+            description: "Date the rep left - null if still active"
+          - name: role
+            description: "Job title of the rep"
+          - name: manager
+            description: "Name of the rep's manager"
+          - name: segment
+            description: "Sales segment - SMB, Mid-Market, Enterprise or Strategic"
+
+      - name: deals_meta
+        description: "Deal level attributes for all 700 deals"
+        columns:
+          - name: deal_id
+            description: "Unique identifier for each deal"
+            tests:
+              - not_null
+              - unique
+          - name: owner_id
+            description: "Foreign key to owners table"
+            tests:
+              - not_null
+          - name: created_date
+            description: "Date the deal was created in CRM"
+          - name: close_date
+            description: "Expected or actual close date of the deal"
+          - name: deal_stage
+            description: "Current stage - Prospecting, Qualification, Proposal, 
+                          Negotiation, Closed Won, Closed Lost"
+          - name: forecast_category
+            description: "Forecast category - Pipeline, Best Case, Commit, Closed"
+          - name: deal_amount
+            description: "Deal value in USD"
+          - name: account_industry
+            description: "Industry of the account - Tech, Retail, Healthcare, Finance"
+          - name: account_region
+            description: "Region of the account - North America, EMEA, LATAM"
+          - name: account_size
+            description: "Size of the account - SMB, Mid-Market, Enterprise, Strategic"
+          - name: deal_source
+            description: "How the deal was sourced - Inbound, Outbound, Referral, Partner"
+
+      - name: deals_snapshot
+        description: "Weekly pipeline snapshots tracking deal stage and amount over time.
+                      Approximately 8300 rows representing weekly state of each deal."
+        columns:
+          - name: deal_id
+            description: "Foreign key to deals_meta table"
+            tests:
+              - not_null
+          - name: snapshot_date
+            description: "Date of the weekly snapshot"
+            tests:
+              - not_null
+          - name: stage
+            description: "Stage of the deal at time of snapshot"
+          - name: forecast_category
+            description: "Forecast category at time of snapshot"
+          - name: amount
+            description: "Deal amount at time of snapshot in USD"
+          - name: close_date
+            description: "Expected close date at time of snapshot"
+          - name: owner_id
+            description: "Owner of the deal at time of snapshot"
+
+      - name: targets
+        description: "Quarterly booking targets by owner and segment.
+                      NOTE - Data quality issue detected. Targets grow exponentially 
+                      from $42K in Q1 2024 to billions by Q4 2025. 
+                      These targets are unrealistic and likely a data error.
+                      Flag to client before using in any reporting."
+        columns:
+          - name: quarter
+            description: "Quarter in format YYYY QN e.g. 2025 Q1"
+          - name: owner_id
+            description: "Foreign key to owners table"
+          - name: segment
+            description: "Sales segment"
+          - name: target_amount
+            description: "Quarterly booking target in USD - SEE DATA QUALITY NOTE ABOVE"

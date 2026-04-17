@@ -1,0 +1,26 @@
+name: 'revops_analysis'
+version: '1.0.0'
+config-version: 2
+
+profile: 'revops_analysis'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  revops_analysis:
+    staging:
+      +materialized: table
+      +schema: silver
+    marts:
+      +materialized: table
+      +schema: gold

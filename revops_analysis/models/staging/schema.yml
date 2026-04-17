@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_owners
+    description: "Cleaned sales rep data from bronze layer"
+    columns:
+      - name: owner_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_deals_meta
+    description: "Cleaned deal attributes from bronze layer"
+    columns:
+      - name: deal_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_deals_snapshot
+    description: "Cleaned weekly pipeline snapshots"
+    columns:
+      - name: deal_id
+        tests:
+          - not_null
+
+  - name: stg_targets
+    description: "Cleaned quarterly targets - contains data quality issues"
+    columns:
+      - name: owner_id
+        tests:
+          - not_null

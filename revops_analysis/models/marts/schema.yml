@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: fct_q1_bookings
+    description: "Q1 2025 bookings analysis answering why we missed by 18%"
+    columns:
+      - name: deal_id
+        tests:
+          - not_null
+
+  - name: fct_deal_velocity
+    description: "Deal velocity analysis showing where deals stall"
+    columns:
+      - name: stage
+        tests:
+          - not_null
+
+  - name: fct_pipeline_coverage
+    description: "Q2 2025 pipeline coverage and health analysis"

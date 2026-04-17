@@ -1,0 +1,30 @@
+[0m16:34:19.200541 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000235E48BBC80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000235E48B8C20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000235E48B9C10>]}
+
+
+============================== 16:34:19.210252 | 9c451218-2f35-4729-90f4-2dab68d3be1d ==============================
+[0m16:34:19.210252 [info ] [MainThread]: Running with dbt=1.11.8
+[0m16:34:19.212256 [debug] [MainThread]: running dbt with arguments {'target_path': 'None', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\darak\\.dbt', 'cache_selected_only': 'False', 'invocation_command': 'dbt init revops_analysis', 'warn_error': 'None', 'static_parser': 'True', 'partial_parse': 'True', 'indirect_selection': 'eager', 'send_anonymous_usage_stats': 'True', 'fail_fast': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': 'logs', 'use_experimental_parser': 'False', 'version_check': 'True', 'introspect': 'True', 'quiet': 'False', 'empty': 'None', 'log_cache_events': 'False', 'debug': 'False', 'no_print': 'None', 'use_colors': 'True', 'printer_width': '80', 'write_json': 'True'}
+[0m16:34:19.286847 [info ] [MainThread]: Creating dbt configuration folder at C:\Users\darak\.dbt
+[0m16:34:19.293512 [debug] [MainThread]: Starter project path: C:\Users\darak\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\include\starter_project
+[0m16:34:19.362396 [info ] [MainThread]: 
+Your new dbt project "revops_analysis" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m16:34:19.364055 [info ] [MainThread]: Setting up your profile.
+[0m16:41:38.464481 [info ] [MainThread]: Profile revops_analysis written to C:\Users\darak\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m16:41:38.466382 [debug] [MainThread]: Command `dbt init` succeeded at 16:41:38.466382 after 439.51 seconds
+[0m16:41:38.467067 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000235E48E77D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000235FCAA00E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000235FCAC0530>]}
+[0m16:41:38.467593 [debug] [MainThread]: Flushing usage events
+[0m16:41:39.423578 [debug] [MainThread]: An error was encountered while trying to flush usage events
