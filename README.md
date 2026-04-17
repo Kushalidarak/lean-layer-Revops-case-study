@@ -152,6 +152,8 @@ All 15 data tests passing including:
 
 ---
 
+![Data Lineage](lineage_graph.png)
+
 ## How to Run This Project
 
 ```bash
